@@ -1,0 +1,1 @@
+This is a simple app using Javascript to add endorsements on the list below.
