@@ -1,0 +1,71 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #1B1924;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    margin: auto;
+}
+
+img {
+    width: 90px;
+    margin: 50px auto 0;
+}
+
+h1 {
+    font-size: 25px;
+    margin: 15px auto 20px;
+}
+
+
+input {
+    font-family: 'Inter', sans-serif;
+    background: #444059;
+    color: #8F8F8F;
+    padding: 10px 50px 90px 10px;
+    margin-bottom:15px; 
+    border: none;
+    border-radius: 8px;
+}
+
+
+#publish-btn {
+    background-color: #28A9F1;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.endorsements {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px auto;
+    text-align: center;
+  }
+  
+  #endorsement-list {
+    font-family: 'Inter', sans-serif;
+    list-style-type: none;
+    color: black;
+    text-align: left;
+    padding: 0;
+  }
+  
+  #endorsement-list li {
+    background: white;
+    max-width: 290px;
+    margin: 0 auto 15px;
+    padding: 15px;
+    border: none;
+    border-radius: 1px;
+  }
+  
