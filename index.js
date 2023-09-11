@@ -9,21 +9,34 @@ const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const endorsementsInDB = ref(database, "endorsement-list")
 
-const inputEl = document.getElementById("input-el")
+const textAreaEl = document.getElementById("textarea-el")
 const publishBtn = document.getElementById("publish-btn")
 const endorsementList = document.getElementById("endorsement-list")
+const senderEl = document.getElementById("input-from")
+const receiverEl = document.getElementById("input-to")
 
 publishBtn.addEventListener("click", function() {
-    let inputValue = inputEl.value
+    let inputValue = textAreaEl.value
+    let fromValue = senderEl.value
+    let toValue = receiverEl.value
     
-    push(endorsementsInDB, inputValue)
+    if (inputValue === "") {
+        console.log("Need to type something!")
+    } else {
+        push(endorsementsInDB, {
+            input: inputValue,
+            from: fromValue,
+            to: toValue
+        })
+    }
 
     clearInputText()
 })
 
 onValue(endorsementsInDB, function(snapshot) {
     if (snapshot.exists()) {
-        let endorsementsArray = Object.entries(snapshot.val())
+        let endorsementsObject = snapshot.val()
+        let endorsementsArray = Object.entries(endorsementsObject)
         
         clearEndorsements()
         for (let i = 0; i < endorsementsArray.length; i++) {
@@ -31,27 +44,31 @@ onValue(endorsementsInDB, function(snapshot) {
             let currentItemID = currentItem[0]
             let currentItemValue = currentItem[1]
 
-            appendInputToEndorsementList(currentItemValue)
+            appendInputToEndorsementList(currentItemValue.input, currentItemValue.from, currentItemValue.to)
         }
     }
 
 })
 
 function clearInputText() {
-    inputEl.value = ""
+    textAreaEl.value = ""
+    senderEl.value = ""
+    receiverEl.value = ""
 }
 
 function clearEndorsements() {
     endorsementList.innerHTML = ""
 }
 
-function appendInputToEndorsementList(input) {
-    let newEl = document.createElement("li")
+function appendInputToEndorsementList(input, from, to) {
+    let newListEl = document.createElement("li")
 
-    newEl.textContent = input
+    newListEl.innerHTML = `<strong>To ${to}</strong><br><br>
+                        ${input} <br><br>
+                        <strong>From ${from}</strong>`;
     if (input === "") {
-        console.log("Need to type something!")
+        null;
     } else {
-        endorsementList.append(newEl)
+        endorsementList.append(newListEl)
     }
 }

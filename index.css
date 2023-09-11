@@ -23,8 +23,7 @@ h1 {
 }
 
 
-#input-el {
-    display: block;
+#textarea-el {
     font-family: 'Inter', sans-serif;
     background: #444059;
     color: #8F8F8F;
@@ -35,7 +34,22 @@ h1 {
     resize: none;
 }
 
+.recipients {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    margin: 0 auto 10px;
+}
 
+.recipients-css {
+    background: #444059;
+    color: #8F8F8F;
+    border: none;
+    padding: 10px 37px;
+    border-radius: 8px;
+    width: 25%;
+    text-align: center;
+}
 
 #publish-btn {
     background-color: #28A9F1;
